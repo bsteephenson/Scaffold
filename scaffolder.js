@@ -13,7 +13,6 @@ var generator = function(file, line, line_number, callback){
 	var params = require('./parse_params').parse(line)
 	params['content'] = require('./find_inner').inner(file, line_number)
 	var end_line = require('./find_inner').end_line(file, line_number)
-	console.log(params)
 	var indent = detect_indent(line).indent
 
 	require('./template_finder').find(parse_command, function(found, template_file){
@@ -43,7 +42,6 @@ var scaffold = function(file, commands, callback){
 			}
 			else{
 				var result = list[0].results[0]
-				console.log(result)
 				generator(file, result.line, result.line_number, function(){
 					scaffold(file, commands, callback)
 				})

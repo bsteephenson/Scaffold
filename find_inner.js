@@ -34,7 +34,6 @@ module.exports.end_line = function(file, line_number){
 	var inner = ""
 	for(var i = line + 1; i < file_lines.length; i++){
 		if(detect_indent(file_lines[i]).amount <= indent){
-			console.log(i)
 			return i;
 		}
 	}
