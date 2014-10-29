@@ -3,8 +3,6 @@ var scaffolder = require('./scaffolder')
 
 var argv = require('minimist')(process.argv.slice(2));
 
-console.log(process.argv)
-
 if('install' in argv){
 	var name = argv.install
 	var git_repo = argv._[0]
@@ -15,5 +13,7 @@ else{
 	argv._.shift()
 	var commands = argv._
 	
-	scaffolder(file, commands)
+	scaffolder(file, commands, function(){
+		console.log("All done.")
+	})
 }
